@@ -20,5 +20,12 @@ program
     .alias('f')
     .description('Find a customer')
     .action((name) => findCustomer(name))
+program
+    .command('uri')
+    .alias('u')
+    .description(':)')
+    .action(() => {
+        console.info(process.env.MONGOURI)
+    });
 
 program.parse(process.argv);

@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config({path: './.env'});
+
 
 // map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 //connect db
-const db = mongoose.connect('mongodb+srv://Admin:Admin@leaderboard.rynaf.mongodb.net/customer?retryWrites=true&w=majority', {
+const db = mongoose.connect(process.env.MONGOURI, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,
