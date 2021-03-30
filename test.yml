@@ -1,0 +1,38 @@
+# YAML Ain't Markup Langauge
+# This is a comment
+
+person:
+  name: &name 'Nimit'
+  occupation: 'Backend Dev'
+  age: !!float 19 # 19.0
+  gpa: !!str 8.0 # "8.0"
+  fav_num: 1e+10
+  male: true
+  birthday: 2001-28-10 10:00:00 # ISO 8601
+  flaws: null
+  hobbies:
+    - coding
+    - football
+    - cricket
+  movies: ['Jocker', 'Your Name']
+  friends:
+    - name: 'Jnvee'
+    - age: 19
+    - { name: 'Raval', age: 18 }
+    - name: 'Ashwin'
+      age: 19
+  description: >
+    lorem ipsum lorem ipsum lorem ipsum
+    lorem ipsum lorem ipsum lorem ipsum
+    lorem ipsum lorem ipsum lorem ipsum
+  signature: |
+    Nimit
+    Navrachana University
+    email - mnimitsavant@gmail.com
+  id: *name # "Nimit"
+  base: &base
+    var1: value1
+
+  foo:
+    <<: *base # var1 = value1
+    var2: value2
