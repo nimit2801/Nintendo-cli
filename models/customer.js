@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-require('dotenv').config({path: '../config/config.env'});
-
 const customerSchema = mongoose.Schema({
     firstname: {type: String},
     lastname: {type: String},

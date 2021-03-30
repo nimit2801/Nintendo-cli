@@ -5,7 +5,7 @@ require('dotenv').config({path: './.env'});
 // map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 //connect db
-const db = mongoose.connect(process.env.MONGOURI, {
+const db = mongoose.connect('mongodb+srv://Admin:Admin@leaderboard.rynaf.mongodb.net/customer?retryWrites=true&w=majority', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,
@@ -30,19 +30,50 @@ const findCustomer = (name) => {
     // Customer.find({$or: [{firtsname: search}, {lastname:search}]})
     Customer.find({$or: [{firstname: search}, {lastname: search}]})
     .then(customer => {
+        console.info(customer);
+        console.info(`${customer.length} matches`);
         if(customer.length === 0){
             console.log('no customers found');
         }
-        console.info(customer);
-        console.info(`${customer.length} matches`);
         process.exit(1);
     });
+}
+
+// Update Csutomers
+const updateCustomers = (_id, customer) => {
+    Customer.updateMany({_id}, customer)
+    .then(customer => {
+        console.info('Customer Updated');
+        process.exit(1);
+    });
+}
+
+// Remove Customers
+const removeCustomers = (_id) => {
+    Customer.deleteOne({_id})
+    .then(customer => {
+        console.info('Customer Removed');
+        process.exit(1);
+    })
+}
+
+// List Customers
+const listCustomers = () => {
+    Customer.find()
+        .then(customers => {
+            console.info(customers);
+            console.info(`${customers.length} customers`)
+            process.exit(1);
+        })
 }
 
 //Export All methods
 module.exports = {
     addCustomer,
-    findCustomer
+    findCustomer,
+    updateCustomers,
+    removeCustomers,
+    listCustomers
 }
 
 
