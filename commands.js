@@ -99,6 +99,14 @@ program
         console.info(process.env.MONGOURI)
     });
 
+program
+    .command('time-table')
+    .alias('tt')
+    .description('CSE SY Term 2 TT')
+    .action(() => {
+        module.exports = require('./src/cli-time-table');
+        process.exit(1);
+    })
  
 
 program.parse(process.argv);
