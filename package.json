@@ -12,9 +12,12 @@
   "author": "Nimit2801",
   "license": "MIT",
   "dependencies": {
+    "cli-table3": "^0.6.0",
     "commander": "^7.2.0",
+    "curl-to-postmanv2": "^0.5.1",
     "dotenv": "^8.2.0",
     "inquirer": "^8.0.0",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "postman-collection": "^3.6.10"
   }
 }
